@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objectives</title>
+    <style>
+      .Card-container{
+        margin: 50px;
+        width: 60rem;
+        height: 20rem;
+        perspective: 100rem;
+      }
+      .flip-card, .font, .back {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .flip-card{
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+      }
+      .Card-container:hover .flip-card, .back {
+          transform: rotateY(180deg);
+      }
+      .font, .back {
+        border-radius: 20px;
+        position: absolute;
+        backface-visibility: hidden;
+      }
+      .font {
+        background-color: #c5f1ff;
+      }
+      .back {
+        background-color: #ffecc5;
+      }
+    </style>
+</head>
+<body>
+    <div class="Card-container">
+        <div class="flip-card">
+            <div class="font">
+               <h1>
+                OUR OBJECTIVES
+               </h1>
+               <p  style="text-align: right;"> To have a solidarity group   with full cooperation between ourself.<br>
+                                    To have strong and resposible leaders who will guide to achieve.<br>
+                                    To reach the demand of Orphans and childrean with the need.(Create smile) </p>
+            </div>
+            <div class="back">
+               <div>
+                <h1 class="text-4xl">
+                    Welcome
+                   </h1>
+                   <p class="textx-lg"> Creating Smile Community </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

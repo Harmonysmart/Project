@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Form</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #faf8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.form-container {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#formFeedback {
+    margin-top: 10px;
+    color: red;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="contactForm">
+            <h2>Contact Us</h2>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="1" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+        <p id="formFeedback"></p>
+    </div>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the form from submitting the traditional way
+
+    // Get form values
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const age = document.getElementById('age').value;
+    const message = document.getElementById('message').value.trim();
+    const feedback = document.getElementById('formFeedback');
+
+    // Basic validation
+        if (!name || !email || !age || !message) {
+        feedback.textContent = 'Please fill out all fields.';
+        return;
+    }
+
+    if (!validateEmail(email)) {
+        feedback.textContent = 'Please enter a valid email address.';
+        return;
+    }
+
+    if (age < 1) {
+        feedback.textContent = 'Please enter a valid age.';
+        return;
+    }
+
+    // If validation passes
+    feedback.textContent = 'Form submitted successfully!';
+    feedback.style.color = 'green';
+
+    // Reset form fields (optional)
+    document.getElementById('contactForm').reset();
+});
+
+function validateEmail(email) {
+    const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return re.test(email);
+}
+    </script>
+</body>
+</html>
